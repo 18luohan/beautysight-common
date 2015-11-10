@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.beautysight.common</groupId>
+        <artifactId>beautysight-common</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mongo-based-common</artifactId>
+
+    <properties>
+        <spring-data-mongodb.version>1.8.0.RELEASE</spring-data-mongodb.version>
+        <morphia.version>1.0.1</morphia.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bizapp-common</artifactId>
+        </dependency>
+
+        <!-- MongoDB Driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+        </dependency>
+        <!-- Spring Data MongoDB -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+        </dependency>
+        <!-- Morphia -->
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia-util</artifactId>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia-entityscanner-plug</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia-logging-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>test-common</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Data MongoDB -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring-data-mongodb.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.mongodb</groupId>
+                        <artifactId>mongo-java-driver</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- MongoDB Morphia -->
+            <dependency>
+                <groupId>org.mongodb.morphia</groupId>
+                <artifactId>morphia</artifactId>
+                <version>${morphia.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.mongodb</groupId>
+                        <artifactId>mongo-java-driver</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>org.mongodb.morphia</groupId>
+                <artifactId>morphia-util</artifactId>
+                <version>${morphia.version}</version>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.mongodb.morphia</groupId>
+                <artifactId>morphia-validation</artifactId>
+                <version>${morphia.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb.morphia</groupId>
+                <artifactId>morphia-entityscanner-plug</artifactId>
+                <version>${morphia.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb.morphia</groupId>
+                <artifactId>morphia-logging-slf4j</artifactId>
+                <version>${morphia.version}</version>
+            </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>test-common</artifactId>
+                <version>${version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
